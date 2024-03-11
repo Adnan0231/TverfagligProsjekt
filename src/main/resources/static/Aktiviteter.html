@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="aktiviteter.css">
+    <style>
+      
+
+    </style>
+</head>
+<body>
+        <nav class="bar">
+            <a href="index.html"><img src="Bilderqatar/qatarlogo.png" style="width: 100px;"class="logo"> </a>
+            <ul>
+                <li><a href="index.html">HJEM</a></li>
+                <li><a href="Aktiviteter.html"> BOOKING </a></li>
+                <li><a href="Overnatting.html">OVERNATTING</a></li>
+                <li><a href="Informasjon.html">KONTAKT OSS</a></li>
+                <li><a href="Logginn.html">LOGG INN</a></li>
+				
+            </ul>
+        </nav>
+ <br></br>
+ <br></br>
+ <br></br>
+ <div id="attractions">
+	<h2>Museum i qatar </h2>
+	<p> <b>TRYKK PÅ MUSEUM FOR MER INFORMASJON!<b></p>
+	<ul>
+	  <li>
+      <a href="Nationalmuseum.html">National Museum of Qatar - 3-2-1 Qatar Olympic and Sports Museum - Mathaf Arab Museum Of Modern Art </a></li>
+	  
+	</ul>
+	<br></br>
+	
+	
+</div>
+ <h1>Museumsbilletter</h1>
+	<form>
+		<label for="museum">Museumskategori:</label>
+		<select id="museum" >
+			<option value="">Velg museumskategori</option>
+			<option value="National Museum of Qatar">National Museum of Qatar</option>
+			<option value="3-2-1 Qatar Olympic and Sports Museum">3-2-1 Qatar Olympic and Sports Museum</option>
+			<option value="Mathaf Arab Museum of Modern Art">Mathaf Arab Museum Of Modern Art</option>
+		</select>
+
+		<label for="adults">Antall voksne:</label>
+		<input type="number" id="adults" min="0" max="10" required>
+
+		<label for="children">Antall barn:</label>
+		<input type="number" id="children" min="0" max="10" required>
+
+		<label for="date">Dato:</label>
+		<input type="date" id="date" required>
+
+		<label for="time">Tidspunkt:</label>
+		<select id="time" required>
+			<option value="">Velg tidspunkt</option>
+			<option value="10">10:00</option>
+			<option value="12">12:00 (tilleggspris)</option>
+			<option value="15">15:00</option>
+			<option value="17">17:00</option>
+			<option value="19">19:00 (tilleggspris)</option>
+		</select>
+<br></br>
+		<button type="submit">Bestill billetter</button>
+	</form>
+
+	<div id="price"></div>
+
+	<div class="footer">
+		<div class="social">
+		  <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+		  <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+		  <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+		  <a href="https://www.snapchat.com/" target="_blank"><i class="fab fa-snapchat"></i></a>
+		</div>
+		<ul class="list">
+		  <li>
+			<a href="index.html">Hjem</a>
+		  </li>
+		  <li>
+			<a href="Aktiviteter.html">Booking</a>
+		  </li>
+		  <li>
+			<a href="Overnatting.html">Overnatting</a>
+		  </li>
+		  <li>
+			<a href="Logginn.html">Logg inn</a>
+		  </li>
+		  <li>
+			<a href="Informasjon.html">Kontakt oss</a>
+		</li>
+						</ul>
+						<p class="copyright">Adnan Abdi @ 2023</p>
+					  </div>
+
+<script>
+ // Velger HTML-skjemaet på siden ved hjelp av querySelector()-metoden og lagrer det i variabelen
+let form = document.querySelector('form');
+
+// Velger HTML-elementet med id-en "price" på siden ved hjelp av querySelector()-metoden og lagrer det i variabelen priceDiv.
+
+
+let priceDiv = document.querySelector('#price');
+
+
+// Legger til en lytter på skjemaet som venter på en submit-hendelse. 
+//Når hendelsen utløses, kjører koden inne i blokken som starter på denne linjen.
+form.addEventListener('submit', e => {
+
+// Forhindrer at standard oppførsel for hendelsen (i dette tilfellet å sende skjemaet) skjer.
+	e.preventDefault();
+
+// Velger HTML-elementet med id-ene på siden ved hjelp av `querySelector()`-metoden, 
+// lagrer verdien av inputfeltet i variabelene, og konverterer det til et tall ved hjelp av `Number()`-funksjonen.
+
+	let museum = document.querySelector('#museum').value;
+	let adults = Number(document.querySelector('#adults').value);
+	let children = Number(document.querySelector('#children').value);
+	let date = document.querySelector('#date').value;
+	let time = Number(document.querySelector('#time').value);
+// Sjekker om summen av antall voksne og barn er større enn 10.
+	if (adults + children > 10) {
+
+// Viser en advarsel hvis betingelsen på linje 10 er sann.
+		alert('Maksimum 10 personer per bestilling.');
+
+// Returnerer/avbryter funksjonen hvis betingelsen på linje 10 er sann.
+		return;
+	}
+// Sjekker om noen av verdiene ikke er oppgitt ved å sjekke om noen av dem er falske.
+	if (!museum || !time || !date) {
+		alert('Vennligst fyll ut alle feltene.');
+		return;
+	}
+// Beregner prisen per voksen og barn basert på tidspunktet.
+	let pricePerAdult = time >= 17 ? 250 : 200;
+	let pricePerChild = time >= 17 ? 200 : 150;
+//Beregner prisen utifra valg
+	let totalPrice = adults * pricePerAdult + children * pricePerChild;
+
+// Setter innholdet i `priceDiv`-elementet til en tekststreng som viser totalprisen og andre relevante detaljer om bestillingen.
+	priceDiv.textContent = 'Totalpris for ' + adults + ' voksne og ' + children + ' barn på ' + museum + ', kl.' + time + ':00 den ' + date +  ' er ' + totalPrice + ' kr ';
+});
+
+</script>
+ 
+ 
+    
+    
+</body>
+</html>
+

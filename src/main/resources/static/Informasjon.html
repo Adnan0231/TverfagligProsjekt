@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kontakt oss</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="informasjon.css">
+	<style>
+	</style>
+</head>
+<body>
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Us</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		/* your CSS styles here */
+	</style>
+</head>
+<body>
+	<nav class="bar">
+        <a href="index.html"><img src="Bilderqatar/qatarlogo.png" style="width: 100px; ;"class="logo"> </a>
+        <ul>
+            <li><a href="index.html">HJEM</a></li>
+            <li><a href="Aktiviteter.html"> BOOKING </a></li>
+            <li><a href="Overnatting.html">OVERNATTING</a></li>
+            <li><a href="Informasjon.html">KONTAKT OSS</a></li>
+            <li><a href="Logginn.html">LOGG INN</a></li>
+            
+        </ul>
+    </nav>
+</div>
+<br></br>
+<br></br>
+		<h1>Kontakt oss</h1>
+	<div class="container">
+		<p>Ikke nøl med å kontakte oss hvis du har spørsmål eller tilbakemeldinger.</p>
+		<form id="kontakt-skjema">
+			<label for="navn">Navn</label>
+			<input type="text" id="navn" name="navn" placeholder="Ditt navn.." required>
+			<label for="epost">E-post</label>
+			<input type="text" id="epost" name="epost" placeholder="Din e-postadresse.." required>
+			<label for="emne">Emne</label>
+			<input type="text" id="emne" name="emne" placeholder="Emne.." required>
+			<label for="melding">Melding</label>
+			<textarea id="melding" name="melding" placeholder="Skriv noe.." style="height:200px" required></textarea>
+			<button type="submit">Send</button>
+		</form>
+	</div>
+    
+    <div class="footer">
+        <div class="social">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.snapchat.com/" target="_blank"><i class="fab fa-snapchat"></i></a>
+        </div>
+        <ul class="list">
+          <li>
+            <a href="index.html"><b>Hjem</b></a>
+          </li>
+          <li>
+            <a href="Aktiviteter.html"><b>Booking</b></a>
+          </li>
+          <li>
+            <a href="Overnatting.html"><b>Overnatting</b></a>
+          </li>
+          <li>
+            <a href="Logginn.html"><b>Logg inn</b></a>
+          </li>
+          <li>
+            <a href="Informasjon.html"><b>Kontakt oss</b></a>
+        </li>
+                        </ul>
+                        <p class="copyright"><b>Adnan Abdi @ 2023</b></p>
+                      </div>
+	<script>
+//Denne linjen henter referansen til skjemaet med ID "kontakt-skjema" og lagrer den i en variabel kalt "skjema".
+let skjema = document.querySelector("#kontakt-skjema");
+
+//Her legger vi til en hendelseslytter på skjemaet som lytter etter "submit" hendelsen som oppstår når brukeren klikker
+ //på knappen for å sende skjemaet. Når hendelsen blir trigget, så kjører funksjonen som er gitt som et argument til 
+ //"addEventListener". Funksjonen starter med å forhindre standard oppførsel ved å kalle "preventDefault()" metoden på "event"-objektet. 
+ //Dette forhindrer at skjemaet blir sendt til serveren på vanlig måte.
+
+ skjema.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  //Her henter vi referanser til de forskjellige input-feltene i skjemaet ved å bruke "document.queryselector"
+   //metoden og lagrer dem i variabler. ID-ene som brukes ("navn", "epost", "emne" og "melding") må 
+   //matche ID-ene som er satt på input-feltene i HTML-koden.
+  
+  let navnInput = document.querySelector("#navn");
+  let epostInput = document.querySelector("#epost");
+  let emneInput = document.querySelector("#emne");
+  let meldingInput = document.querySelector("#melding");
+  
+
+  //Her henter vi innholdet til hver av input-feltene ved å bruke "value" 
+  //egenskapen til hver av input-elementene som ble lagret i variablene i forrige linje.
+
+
+  let navn = navnInput.value;
+  let epost = epostInput.value;
+  let emne = emneInput.value;
+  let melding = meldingInput.value;
+  
+
+  //Her sjekker vi om noen av input-feltene er tomme. Hvis det er noen tomme felt, så vises en advarsel-melding ved hjelp av
+  //"alert()" funksjonen. Hvis alle feltene er utfylt, så sender vi skjemaet til serveren ved å kalle "submit()" metoden på 
+  //"skjema"-elementet. Vi nullstiller også alle input-feltene ved å sette verdien til en tom streng. Til slutt vises en 
+  //melding som takker brukeren for å ha kontaktet oss.
+
+
+  if (navn === "" || epost === "" || emne === "" || melding === "") {
+    alert("Vennligst fyll ut alle feltene.");
+  } else {
+    skjema.submit();
+    navnInput.value = "";
+    epostInput.value = "";
+    emneInput.value = "";
+    meldingInput.value = "";
+    alert("Takk for at du kontaktet oss!");
+  }
+
+  location.replace("index.html");
+});
+	</script>
+</body>
+</html>
+	</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logg inn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="logginn.css">
+    <style>
+        #registrationForm {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="hoved">
+    <div class="Bilde">
+        <img src="Bilderqatar/Logginnbilde.jpeg" style="width: 100%; height:820px;" alt="">
+    </div>
+    <nav class="bar">
+        <a href="index.html"><img src="Bilderqatar/qatarlogo.png" style="width: 100px; ;" class="logo"> </a>
+        <ul>
+            <li><a href="index.html">HJEM</a></li>
+            <li><a href="Aktiviteter.html"> BOOKING </a></li>
+            <li><a href="Overnatting.html">OVERNATTING</a></li>
+            <li><a href="Informasjon.html">KONTAKT OSS</a></li>
+            <li><a href="Logginn.html">LOGG INN</a></li>
+        </ul>
+    </nav>
+
+    <div id="LogginnBoks" style="position:absolute;">
+        <div id="title"><h1>Logg Inn</h1></div>
+        <div id="Javastuff">
+            <div id="logINNEl">
+                <input type="email" id="Epost" class="inputs" placeholder="E-post"> <br>
+                <input type="password" id="password" class="inputs" placeholder="Passord"> <br>
+                <p id="utskrif"></p>
+                <button id="Enter">Logg Inn</button>
+                <p id="text">Ikke medlem? <a href="#" id="registerLink">Registrer deg</a> helt gratis</p>
+                <p id="utskrift" class="inputs" style="color:red;"></p>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registrationForm" action="register.php" method="POST" style="display: none;">
+                <h2>Registrer deg</h2>
+                <input type="text" id="regName" name="regName" class="inputs" placeholder="Fullt navn" required> <br>
+                <input type="email" id="regEmail" name="regEmail" class="inputs" placeholder="E-post" required> <br>
+                <input type="password" id="regPassword" name="regPassword" class="inputs" placeholder="Passord" required> <br>
+                <button type="submit" id="Register">Registrer</button>
+            </form>
+            <!-- End of Registration Form -->
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="social">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.snapchat.com/" target="_blank"><i class="fab fa-snapchat"></i></a>
+    </div>
+    <ul class="list">
+        <li><a href="index.html"><b>Hjem</b></a></li>
+        <li><a href="Aktiviteter.html"><b>Booking</b></a></li>
+        <li><a href="Overnatting.html"><b>Overnatting</b></a></li>
+        <li><a href="Logginn.html"><b>Logg inn</b></a></li>
+        <li><a href="Informasjon.html"><b>Kontakt oss</b></a></li>
+    </ul>
+    <p class="copyright"><b>Adnan Abdi @ 2023</b></p>
+</div>
+<script>
+    let logINNEl = document.querySelector('#LogginnBoks #logINNEl');
+    let EpostEl = document.querySelector('#Epost');
+    let PasswordEl = document.querySelector('#password');
+    let utskrifEl = document.querySelector('#utskrift');
+    let EnterEl = document.querySelector('#Enter');
+    let registerLinkEl = document.getElementById('registerLink');
+    let registrationFormEl = document.getElementById('registrationForm');
+    let titleEl = document.getElementById('title');
+    let registerButtonEl = document.getElementById('Register');
+
+    let admin = {
+        Navn: 'admin',
+        Etternavn: '101',
+        epost: 'admin101@osloskolen.no',
+        password: 'admin101'
+    }
+
+    console.log(admin.Navn + " " + admin.password);
+
+    if (localStorage.getItem('emailEl') == null) {
+        localStorage.setItem('emailEl', '[]');
+    }
+
+    if (localStorage.getItem('PasswordEl') == null) {
+        localStorage.setItem('PasswordEl', '[]');
+    }
+
+    function check() {
+        // Existing login check logic
+    }
+
+    function register() {
+        // Perform registration logic
+        alert('Du er nå registrert! Velkommen tilbake til innloggingssiden.');
+        window.location.replace("Logginn.html");
+    }
+
+    EnterEl.addEventListener('click', check);
+    registerButtonEl.addEventListener('click', register);
+
+    // Toggle between login and registration forms
+    registerLinkEl.addEventListener('click', function () {
+        registrationFormEl.style.display = 'block'; // Show the registration form
+        logINNEl.style.display = 'none'; // Hide the login form
+        titleEl.innerHTML = '<h1>Registrer deg</h1>'; // Change the title
+    });
+</script>
+</body>
+</html>
